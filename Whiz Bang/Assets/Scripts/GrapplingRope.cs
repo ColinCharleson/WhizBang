@@ -17,6 +17,10 @@ public class GrapplingRope : MonoBehaviour
     public AnimationCurve affectCurve;
     private float delta;
 
+    public GameObject plungerHead;
+    bool grappled = false;
+    Quaternion curRot;
+
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -35,11 +39,30 @@ public class GrapplingRope : MonoBehaviour
         //If not grappling, don't draw rope
         if (!grapplingGun.IsGrappling())
         {
+            grappled = false;
+            plungerHead.transform.position = grapplingGun.gunTip.position;
+            plungerHead.transform.rotation = grapplingGun.gunTip.rotation;
+
             currentGrapplePosition = grapplingGun.gunTip.position;
+
             spring.Reset();
             if (lr.positionCount > 0)
                 lr.positionCount = 0;
             return;
+        }
+        else
+        { 
+            if(grappled == false)
+            {
+                grappled = true;
+                curRot = plungerHead.transform.rotation;
+            }
+            else
+            {
+                plungerHead.transform.rotation = curRot;
+            }
+
+            plungerHead.transform.position = currentGrapplePosition;
         }
 
         if (lr.positionCount == 0)
