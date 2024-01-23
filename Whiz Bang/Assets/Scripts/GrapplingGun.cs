@@ -3,35 +3,25 @@ using UnityEngine;
 public class GrapplingGun : MonoBehaviour
 {
 
-    private LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
     private float maxDistance = 100f;
     private SpringJoint joint;
 
-    void Awake()
-    {
-        lr = GetComponent<LineRenderer>();
-    }
-
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             StartGrapple();
         }
-        else if (Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(1))
         {
             StopGrapple();
         }
     }
 
-    //Called after Update
-    void LateUpdate()
-    {
-        DrawRope();
-    }
+
 
     /// <summary>
     /// Call whenever we want to start a grapple
@@ -56,9 +46,6 @@ public class GrapplingGun : MonoBehaviour
             joint.spring = 4.5f;
             joint.damper = 7f;
             joint.massScale = 4.5f;
-
-            lr.positionCount = 2;
-            currentGrapplePosition = gunTip.position;
         }
     }
 
@@ -68,22 +55,10 @@ public class GrapplingGun : MonoBehaviour
     /// </summary>
     void StopGrapple()
     {
-        lr.positionCount = 0;
         Destroy(joint);
     }
 
-    private Vector3 currentGrapplePosition;
 
-    void DrawRope()
-    {
-        //If not grappling, don't draw rope
-        if (!joint) return;
-
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
-
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
-    }
 
     public bool IsGrappling()
     {

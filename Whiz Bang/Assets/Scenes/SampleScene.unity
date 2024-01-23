@@ -1091,6 +1091,7 @@ GameObject:
   - component: {fileID: 948900371}
   - component: {fileID: 948900370}
   - component: {fileID: 948900374}
+  - component: {fileID: 948900375}
   m_Layer: 0
   m_Name: GrappleGun
   m_TagString: Untagged
@@ -1179,9 +1180,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.30269474, b: 0, a: 1}
-      key1: {r: 1, g: 0.30269474, b: 0, a: 1}
-      key2: {r: 1, g: 1, b: 1, a: 0}
+      key0: {r: 0.5943396, g: 0.2968747, b: 0.26633143, a: 1}
+      key1: {r: 0.990566, g: 0.6495552, b: 0.2663314, a: 1}
+      key2: {r: 1, g: 1, b: 1, a: 0.9666834}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -1196,9 +1197,9 @@ LineRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
+      atime1: 36623
+      atime2: 65342
+      atime3: 65535
       atime4: 0
       atime5: 0
       atime6: 0
@@ -1206,7 +1207,7 @@ LineRenderer:
       m_Mode: 0
       m_ColorSpace: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 4
     numCornerVertices: 10
     numCapVertices: 10
     alignment: 0
@@ -1307,6 +1308,49 @@ MonoBehaviour:
   gunTip: {fileID: 978241845}
   camera: {fileID: 1981024762}
   player: {fileID: 150913416}
+--- !u!114 &948900375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948900368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1cd419eb0718845bd21a28d725882b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grapplingGun: {fileID: 948900374}
+  quality: 500
+  damper: 14
+  strength: 800
+  velocity: 15
+  waveCount: 3
+  waveHeight: 1
+  affectCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.0129075
+      outSlope: 6.0129075
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0014779815
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,7 +1892,7 @@ Transform:
   m_GameObject: {fileID: 1692108495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.79, y: 0, z: 1.68}
+  m_LocalPosition: {x: 0.735, y: 0, z: 1.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
