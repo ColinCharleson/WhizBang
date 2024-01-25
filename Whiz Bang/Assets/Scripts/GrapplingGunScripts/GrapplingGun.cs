@@ -8,6 +8,9 @@ public class GrapplingGun : MonoBehaviour
     public Transform gunTip, camera, player;
     private float maxDistance = 100f;
     private SpringJoint joint;
+    public RaycastHit predictionHit;
+    public float predictionSphereCastRadious;
+    public Transform predictionPoint;
 
     void Update()
     {
@@ -23,9 +26,7 @@ public class GrapplingGun : MonoBehaviour
 
 
 
-    /// <summary>
-    /// Call whenever we want to start a grapple
-    /// </summary>
+
     void StartGrapple()
     {
         RaycastHit hit;
@@ -48,7 +49,6 @@ public class GrapplingGun : MonoBehaviour
             joint.massScale = 4.5f;
         }
     }
-
 
     /// <summary>
     /// Call whenever we want to stop a grapple

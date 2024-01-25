@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     //Other
     private Rigidbody rb;
+    public int health = 100;
+    public TextMeshProUGUI healthDisplay;
 
     //Rotation and look
     private float xRotation;
@@ -67,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MyInput();
         Look();
+        UpdateHealthDisplay();
     }
 
     /// <summary>
@@ -84,6 +88,16 @@ public class PlayerMovement : MonoBehaviour
             StartCrouch();
         if (Input.GetKeyUp(KeyCode.LeftControl))
             StopCrouch();
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+        if(health <= 0)
+        {
+            Debug.Log("Penis");
+        }
     }
 
     private void StartCrouch()
@@ -294,4 +308,13 @@ public class PlayerMovement : MonoBehaviour
         grounded = false;
     }
 
+    void UpdateHealthDisplay()
+    {
+        // Check if healthDisplay is assigned and not null
+        if (healthDisplay != null)
+        {
+            // Set the text of the health display to the current health value
+            healthDisplay.text = "Health: " + health.ToString();
+        }
+    }
 }

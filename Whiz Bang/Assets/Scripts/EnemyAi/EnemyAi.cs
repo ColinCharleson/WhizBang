@@ -8,9 +8,13 @@ public class EnemyAi : MonoBehaviour
 
     public Transform player;
 
+    public Transform bulletSpawnPoint;
+
     public LayerMask whatIsGround, whatIsPlayer;
 
     public float health;
+
+    bool isAlive = true;
 
     //Patroling
     public Vector3 walkPoint;
@@ -38,9 +42,12 @@ public class EnemyAi : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patroling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (isAlive)
+        {
+            if (!playerInSightRange && !playerInAttackRange) Patroling();
+            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+            if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        }
     }
 
     private void Patroling()
@@ -83,13 +90,17 @@ public class EnemyAi : MonoBehaviour
         if (!alreadyAttacked)
         {
             ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 1f, ForceMode.Impulse);
-            ///End of attack code
-            Destroy(rb.gameObject, 2f);
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            ///
+            if (isAlive)
+            {
+                Rigidbody rb = Instantiate(projectile, bulletSpawnPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+        
+                ///End of attack code
+                Destroy(rb.gameObject, 2f);
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            }
         }
     }
     private void ResetAttack()
@@ -101,7 +112,11 @@ public class EnemyAi : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
+        if (health <= 0)
+        {
+          isAlive = false;
+          Invoke(nameof(DestroyEnemy), 0.5f);
+        }
     }
     private void DestroyEnemy()
     {
