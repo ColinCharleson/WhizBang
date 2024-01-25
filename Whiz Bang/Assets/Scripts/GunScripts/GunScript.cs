@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using TMPro;
+using UnityEditor.Animations;
 
 public class GunScript : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class GunScript : MonoBehaviour
     //Graphics
     public GameObject muzzleFlash;
     public TextMeshProUGUI ammunitionDisplay;
+    public Animator reload;
 
     //bug fixing 
     public bool allowInvoke = true;
@@ -136,6 +138,7 @@ public class GunScript : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        reload.SetTrigger("isReloading");
         Invoke("ReloadFinished", reloadTime); 
     }
     private void ReloadFinished()
