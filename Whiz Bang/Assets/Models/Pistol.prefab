@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 6367488301980490096}
   - component: {fileID: 1393381687794826001}
   - component: {fileID: 2370741498850181947}
-  - component: {fileID: 740077677427885360}
+  - component: {fileID: 8085636413422232865}
+  - component: {fileID: 5584168722175372890}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -63,7 +64,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.000000059605, z: -0.271}
-  m_LocalScale: {x: 0.075844, y: 0.18285, z: 0.43732}
+  m_LocalScale: {x: 0.07374322, y: 0.14015806, z: 0.25573}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7330564693910276501}
@@ -152,12 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08beb83531e46234eae00c1f5d842194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6414499693680001867, guid: fb08dd2c4ea961e4c8a5827e7a6d20b9, type: 3}
+  bullet: {fileID: 6414499693680001867, guid: eb1a00c73799f9845a6ed3b13c77af37, type: 3}
   shootForce: 50
   upwardForce: 0
   timeBetweenShooting: 1
   spread: 0
-  reloadTime: 2
+  reloadTime: 1.5
   timeBetweenShots: 0
   magazineSize: 10
   bulletsPerTap: 1
@@ -168,6 +169,7 @@ MonoBehaviour:
   attackPoint: {fileID: 7330564693910276501}
   muzzleFlash: {fileID: 0}
   ammunitionDisplay: {fileID: 0}
+  reload: {fileID: 5584168722175372890}
   allowInvoke: 1
 --- !u!114 &2370741498850181947
 MonoBehaviour:
@@ -182,16 +184,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunScript: {fileID: 1393381687794826001}
-  rb: {fileID: 740077677427885360}
+  rb: {fileID: 8085636413422232865}
   collider: {fileID: 6367488301980490096}
   player: {fileID: 0}
   gunPosition: {fileID: 0}
   camera: {fileID: 0}
+  ammunitionDisplay: {fileID: 0}
   pickUpRange: 4
   dropForwardForce: 15
   dropUpwardForce: 7
-  equipped: 1
---- !u!54 &740077677427885360
+  equipped: 0
+--- !u!54 &8085636413422232865
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +217,28 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 2
+  m_IsKinematic: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!95 &5584168722175372890
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295742150489319410}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44f93aba2e635004cab11f0a6caa8006, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
