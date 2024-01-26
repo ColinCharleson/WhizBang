@@ -9,6 +9,7 @@ public class EnemyAi : MonoBehaviour
     public NavMeshAgent agent;
 
     public Transform player;
+    public Animator animator;
 
     public Transform bulletSpawnPoint;
 
@@ -58,6 +59,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Patroling()
     {
+        animator.SetBool("Attacking", false);
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -83,11 +85,13 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
+        animator.SetBool("Attacking", false);
         agent.SetDestination(player.position);
     }
 
     private void AttackPlayer()
     {
+        animator.SetBool("Attacking", true);
         //Make sure enemy doesn't move
         agent.SetDestination(transform.position);
 
@@ -123,6 +127,7 @@ public class EnemyAi : MonoBehaviour
             health = 0;
             isAlive = false;
             OnDeath();
+            animator.SetTrigger("Die");
             Invoke(nameof(DestroyEnemy), 0.5f);
             ScoreSystem.instance.UpdateScore(scoreValue);
         }

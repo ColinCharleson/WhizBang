@@ -75,6 +75,7 @@ public class GunScript : MonoBehaviour
 
     private void Shoot()
     {
+        reload.SetTrigger("Shoot");
         readyToShoot = false;
 
         //Find the exact hit position using a raycast
