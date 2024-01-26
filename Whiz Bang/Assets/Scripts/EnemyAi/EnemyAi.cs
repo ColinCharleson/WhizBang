@@ -118,14 +118,10 @@ public class EnemyAi : MonoBehaviour
     {
         health -= damage;
 
-        if (health < 0)
+        if (health <= 0 && isAlive)
         {
             health = 0;
-        }
-
-        if (health <= 0)
-        {
-             isAlive = false;
+            isAlive = false;
             OnDeath();
             Invoke(nameof(DestroyEnemy), 0.5f);
             ScoreSystem.instance.UpdateScore(scoreValue);

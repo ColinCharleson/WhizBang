@@ -5885,6 +5885,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8450835193862967294, guid: eaa8b77f315607747af38b836d499e77, type: 3}
     - target: {fileID: 3144993255386808585, guid: 59332fbd84dee444c8987ef79d57e1ca, type: 3}
+      propertyPath: magazineSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144993255386808585, guid: 59332fbd84dee444c8987ef79d57e1ca, type: 3}
+      propertyPath: bulletsPerTap
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144993255386808585, guid: 59332fbd84dee444c8987ef79d57e1ca, type: 3}
       propertyPath: ammunitionDisplay
       value: 
       objectReference: {fileID: 518783206}

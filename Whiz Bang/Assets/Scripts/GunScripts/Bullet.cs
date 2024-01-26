@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     public int damage = 2;
 
+
     void OnCollisionEnter(Collision collision)
     {
         // Check if the collided object is an enemy
