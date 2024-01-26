@@ -4,11 +4,12 @@ using TMPro;
 
 public class EnemyWaveSpawner : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs; 
-    public Transform[] spawnPoints; 
+    public GameObject[] enemyPrefabs;
+    public Transform[] spawnPoints;
+    public TextMeshProUGUI roundText;
     public TextMeshProUGUI enemiesRemainingText; 
-    private int currentRound = 0; 
-    private int enemiesRemaining = 0; 
+    private int currentRound = 0;
+    private int enemiesRemaining = 0;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class EnemyWaveSpawner : MonoBehaviour
 
     void Update()
     {
-     
+        Debug.Log(enemiesRemaining);
         if (enemiesRemaining == 0)
         {
             StartNextRound();
@@ -31,6 +32,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         enemiesRemaining = enemiesToSpawn;
 
         StartCoroutine(SpawnRound(enemiesToSpawn));
+        UpdateRoundText();
     }
 
     IEnumerator SpawnRound(int enemiesToSpawn)
@@ -40,7 +42,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             SpawnEnemy();
-            yield return new WaitForSeconds(0.5f); 
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -50,12 +52,18 @@ public class EnemyWaveSpawner : MonoBehaviour
 
         GameObject randomEnemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         GameObject enemy = Instantiate(randomEnemyPrefab, randomSpawnPoint.position, randomSpawnPoint.rotation);
+        EnemyAi enemyAi = enemy.GetComponent<EnemyAi>();
     }
 
     void OnEnemyDeath()
     {
         enemiesRemaining--;
         UpdateRemainingEnemiesText(); 
+    }
+
+    void UpdateRoundText()
+    {
+        roundText.text = "Round: " + currentRound.ToString();
     }
 
     void UpdateRemainingEnemiesText()

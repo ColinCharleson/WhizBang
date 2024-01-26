@@ -98,6 +98,7 @@ public class EnemyAi : MonoBehaviour
         
                 ///End of attack code
                 Destroy(rb.gameObject, 2f);
+                alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
         }
