@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class EnemyAi : MonoBehaviour
 {
     public NavMeshAgent agent;
@@ -11,6 +12,10 @@ public class EnemyAi : MonoBehaviour
     public Transform bulletSpawnPoint;
 
     public LayerMask whatIsGround, whatIsPlayer;
+
+    public delegate void EnemyDeathHandler();
+
+    public event EnemyDeathHandler OnDeath;
 
     public float health;
 
@@ -112,9 +117,15 @@ public class EnemyAi : MonoBehaviour
     {
         health -= damage;
 
+        if (health < 0)
+        {
+            health = 0;
+        }
+
         if (health <= 0)
         {
              isAlive = false;
+            OnDeath();
             Invoke(nameof(DestroyEnemy), 0.5f);
         }
     }
