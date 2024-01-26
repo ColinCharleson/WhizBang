@@ -98,7 +98,6 @@ public class EnemyAi : MonoBehaviour
         
                 ///End of attack code
                 Destroy(rb.gameObject, 2f);
-                alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);
             }
         }
@@ -114,8 +113,8 @@ public class EnemyAi : MonoBehaviour
 
         if (health <= 0)
         {
-          isAlive = false;
-          Invoke(nameof(DestroyEnemy), 0.5f);
+             isAlive = false;
+            Invoke(nameof(DestroyEnemy), 0.5f);
         }
     }
     private void DestroyEnemy()

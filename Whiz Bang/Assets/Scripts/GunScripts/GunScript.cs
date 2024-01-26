@@ -110,7 +110,13 @@ public class GunScript : MonoBehaviour
 
         //Instantiate muzzle flash, if you have one
         if (muzzleFlash != null)
-            Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+        {
+           
+            GameObject muzzle = Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+            Destroy(muzzle, 0.5f);
+        }
+
+
 
         bulletsLeft--;
         bulletsShot++;

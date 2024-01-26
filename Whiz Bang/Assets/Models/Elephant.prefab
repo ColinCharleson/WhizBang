@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 544181210806730799}
   player: {fileID: 0}
+  bulletSpawnPoint: {fileID: 2910341325127853566}
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
