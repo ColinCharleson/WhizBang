@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56a0a73f75b84747b8c1199df6ff241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreValue: 100
   agent: {fileID: 544181210806730799}
   player: {fileID: 0}
   bulletSpawnPoint: {fileID: 2910341325127853566}

@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
+    [SerializeField] private int scoreValue;
     public NavMeshAgent agent;
 
     public Transform player;
@@ -127,6 +128,7 @@ public class EnemyAi : MonoBehaviour
              isAlive = false;
             OnDeath();
             Invoke(nameof(DestroyEnemy), 0.5f);
+            ScoreSystem.instance.UpdateScore(scoreValue);
         }
     }
     private void DestroyEnemy()
