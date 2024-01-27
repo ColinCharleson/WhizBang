@@ -44,10 +44,10 @@ public class EnemyWaveSpawn : MonoBehaviour
         GameObject randomEnemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         GameObject enemy = Instantiate(randomEnemyPrefab, randomSpawnPoint.position, randomSpawnPoint.rotation);
 
-        EnemyAi enemyAi = enemy.GetComponent<EnemyAi>();
-
-        // Subscribe to the enemy's destruction event
-        enemyAi.OnDeath += OnEnemyDeath;
+        if (enemy.GetComponent<EnemyAi>())
+            enemy.GetComponent<EnemyAi>().OnDeath += OnEnemyDeath;
+        if (enemy.GetComponent<MeleeAI>())
+            enemy.GetComponent<MeleeAI>().OnDeath += OnEnemyDeath;
 
     }
 

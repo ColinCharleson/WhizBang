@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
+  - {fileID: 7521630119504054664, guid: 8c1aa9734278ac544a9646568a24da94, type: 3}
   - {fileID: 3679869821528802804, guid: 56ec4af5bb078044e987c28f0d23ea60, type: 3}
   spawnPoints:
   - {fileID: 1626831458}
