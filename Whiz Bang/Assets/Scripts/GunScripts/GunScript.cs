@@ -8,7 +8,7 @@ public class GunScript : MonoBehaviour
     public GameObject bullet;
 
     //Audio
-    public AudioSource shootingSound;
+    public AudioSource shootingSound, reloadSound;
 
 
     //bullet force
@@ -153,6 +153,11 @@ public class GunScript : MonoBehaviour
 
     private void Reload()
     {
+
+        if (reloadSound != null)
+        {
+            reloadSound.Play();
+        }
         reloading = true;
         reload.SetTrigger("isReloading");
         Invoke("ReloadFinished", reloadTime); 

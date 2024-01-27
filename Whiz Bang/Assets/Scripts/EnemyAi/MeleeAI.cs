@@ -34,7 +34,10 @@ public class MeleeAI : MonoBehaviour
     private bool walkPointSet;
 
     //Sounds
-    public AudioSource hitSound;
+    public AudioSource hitSound, walkSound;
+    private float nextWalkSoundTime;
+    private float minTimeBetweenWalkSounds = 15f;
+    private float maxTimeBetweenWalkSounds = 30f;
 
     // states
     private bool alreadyAttacked;
@@ -54,8 +57,15 @@ public class MeleeAI : MonoBehaviour
 
         if (isAlive)
         {
-            if (!playerInSightRange && !playerInAttackRange) Patroling();
-            if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+            if (!playerInSightRange && !playerInAttackRange)
+            {
+                Patroling();
+            }
+            if (playerInSightRange && !playerInAttackRange)
+            {
+                ChasePlayer();
+            }
+            
             if (playerInAttackRange && playerInSightRange) AttackPlayer();
         }
     }
@@ -88,6 +98,17 @@ public class MeleeAI : MonoBehaviour
 
     private void ChasePlayer()
     {
+        if (isAlive)
+        {
+            if (Time.time >= nextWalkSoundTime)
+            {
+                if (walkSound != null)
+                {
+                    walkSound.Play();
+                }
+                nextWalkSoundTime = Time.time + Random.Range(minTimeBetweenWalkSounds, maxTimeBetweenWalkSounds);
+            }
+        }
         animator.SetBool("Attacking", false);
         agent.SetDestination(player.position);
     }
@@ -108,6 +129,7 @@ public class MeleeAI : MonoBehaviour
     }
     IEnumerator Swing()
     {
+        walkSound.Play();
         canAttack = false;
         animator.SetBool("Attacking", true);
         if (Vector3.Distance(player.transform.position, this.transform.position) < attackRange+ 1f)
