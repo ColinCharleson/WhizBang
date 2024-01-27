@@ -4,7 +4,8 @@ using TMPro;
 
 public class EnemyWaveSpawn : MonoBehaviour
 {
-    public GameObject[] enemyPrefabs;
+    public GameObject[] meleeEnemyPrefabs;
+    public GameObject[] newEnemyPrefabs;
     public Transform[] spawnPoints;
     public TextMeshProUGUI roundText;
     public TextMeshProUGUI enemiesRemainingText; 
@@ -19,7 +20,8 @@ public class EnemyWaveSpawn : MonoBehaviour
     void StartNextRound()
     {
         currentRound++;
-        int enemiesToSpawn = 5 + (currentRound / 2) * 5; 
+
+        int enemiesToSpawn = 3 + (currentRound / 2) * 3; 
         enemiesRemaining = enemiesToSpawn;
 
         StartCoroutine(SpawnRound(enemiesToSpawn));
@@ -41,15 +43,28 @@ public class EnemyWaveSpawn : MonoBehaviour
     {
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        GameObject randomEnemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-        GameObject enemy = Instantiate(randomEnemyPrefab, randomSpawnPoint.position, randomSpawnPoint.rotation);
+        GameObject enemy;
 
+        if (currentRound <= 2)
+        {
+            // Spawn melee enemy for first two rounds
+            GameObject randomMeleeEnemyPrefab = meleeEnemyPrefabs[Random.Range(0, meleeEnemyPrefabs.Length)];
+            enemy = Instantiate(randomMeleeEnemyPrefab, randomSpawnPoint.position, randomSpawnPoint.rotation);
+        }
+        else
+        {
+            // After round 2, spawn new types of enemies
+            GameObject randomEnemyPrefab = newEnemyPrefabs[Random.Range(0, newEnemyPrefabs.Length)];
+            enemy = Instantiate(randomEnemyPrefab, randomSpawnPoint.position, randomSpawnPoint.rotation);
+        }
+
+        // Add event listener for enemy death
         if (enemy.GetComponent<EnemyAi>())
             enemy.GetComponent<EnemyAi>().OnDeath += OnEnemyDeath;
         if (enemy.GetComponent<MeleeAI>())
             enemy.GetComponent<MeleeAI>().OnDeath += OnEnemyDeath;
-
     }
+
 
     void OnEnemyDeath()
     {
