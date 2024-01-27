@@ -27,12 +27,13 @@ public class ScoreSystem : MonoBehaviour
 
         RaycastHit hit;
 
+
         if (Physics.Raycast(ray, out hit, 3))
         {
             if (hit.collider.CompareTag("CanBuy"))
             {
                 buyText.text = "Press E to buy " + hit.collider.gameObject.name + " for " + hit.collider.gameObject.GetComponent<Shop>().cost;
-                if(Input.GetKeyDown(KeyCode.E)) 
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (hit.collider.gameObject.GetComponent<Shop>() && score >= hit.collider.gameObject.GetComponent<Shop>().cost)
                     {
@@ -44,6 +45,10 @@ public class ScoreSystem : MonoBehaviour
             {
                 buyText.text = null;
             }
+        }
+        else
+        {
+            buyText.text = null;
         }
     }
     public void UpdateScore(int value)
