@@ -1,7 +1,6 @@
 
 using UnityEngine;
 using TMPro;
-using UnityEditor.Animations;
 
 public class GunScript : MonoBehaviour
 {
