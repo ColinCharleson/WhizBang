@@ -7,6 +7,10 @@ public class GunScript : MonoBehaviour
     //bullet 
     public GameObject bullet;
 
+    //Audio
+    public AudioSource shootingSound;
+
+
     //bullet force
     public float shootForce, upwardForce;
 
@@ -74,6 +78,12 @@ public class GunScript : MonoBehaviour
 
     private void Shoot()
     {
+
+        if (shootingSound != null)
+        {
+            shootingSound.Play();
+        }
+
         reload.SetTrigger("Shoot");
         readyToShoot = false;
 

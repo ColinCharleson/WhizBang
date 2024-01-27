@@ -33,6 +33,9 @@ public class MeleeAI : MonoBehaviour
     private Vector3 walkPoint;
     private bool walkPointSet;
 
+    //Sounds
+    public AudioSource hitSound;
+
     // states
     private bool alreadyAttacked;
     private bool playerInSightRange, playerInAttackRange;
@@ -126,6 +129,12 @@ public class MeleeAI : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+
+        if (hitSound != null)
+        {
+            hitSound.Play();
+        }
 
         if (health <= 0 && isAlive)
         {

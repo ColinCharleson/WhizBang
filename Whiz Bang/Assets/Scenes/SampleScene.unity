@@ -927,6 +927,7 @@ GameObject:
   - component: {fileID: 150913412}
   - component: {fileID: 150913411}
   - component: {fileID: 150913417}
+  - component: {fileID: 150913418}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1093,6 +1094,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreDisplay: {fileID: 1570154524}
   buyText: {fileID: 2098079562}
+--- !u!81 &150913418
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150913410}
+  m_Enabled: 1
 --- !u!1 &159810847 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 38551060c50e09245aa435f9571088e8, type: 3}
@@ -1867,6 +1876,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 150913416}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &518121627 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5935303646321411086, guid: d753b2f7e2ca6844fa8b32e91f30b39d, type: 3}
+  m_PrefabInstance: {fileID: 1529167432755042377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &527819183
 GameObject:
   m_ObjectHideFlags: 0
@@ -10746,6 +10760,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 150913412}
     - target: {fileID: 1393381687794826001, guid: d753b2f7e2ca6844fa8b32e91f30b39d, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 8450835193862967294, guid: bae0b817e516e8b479ef5a532a61d546, type: 3}
+    - target: {fileID: 1393381687794826001, guid: d753b2f7e2ca6844fa8b32e91f30b39d, type: 3}
+      propertyPath: shootingSound
+      value: 
+      objectReference: {fileID: 518121627}
+    - target: {fileID: 1393381687794826001, guid: d753b2f7e2ca6844fa8b32e91f30b39d, type: 3}
       propertyPath: ammunitionDisplay
       value: 
       objectReference: {fileID: 1920261073}
@@ -10769,6 +10791,10 @@ PrefabInstance:
       propertyPath: ammunitionDisplay
       value: 
       objectReference: {fileID: 1920261073}
+    - target: {fileID: 5935303646321411086, guid: d753b2f7e2ca6844fa8b32e91f30b39d, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6893843895464883795, guid: d753b2f7e2ca6844fa8b32e91f30b39d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.001620304
