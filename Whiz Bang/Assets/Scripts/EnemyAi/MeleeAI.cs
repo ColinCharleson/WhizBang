@@ -37,7 +37,7 @@ public class MeleeAI : MonoBehaviour
     public ParticleSystem hit;
 
     //Sounds
-    public AudioSource hitSound, walkSound;
+    public AudioSource hitSound, walkSound, attackNoise;
     private float nextWalkSoundTime;
     private float minTimeBetweenWalkSounds = 15f;
     private float maxTimeBetweenWalkSounds = 30f;
@@ -126,13 +126,13 @@ public class MeleeAI : MonoBehaviour
             ///Attack code here
             if (isAlive)
             {
+                attackNoise.Play();
                 StartCoroutine(Swing());
             }
         }
     }
     IEnumerator Swing()
     {
-        walkSound.Play();
         canAttack = false;
         animator.SetBool("Attacking", true);
         if (Vector3.Distance(player.transform.position, this.transform.position) < attackRange+ 1f)

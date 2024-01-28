@@ -575,6 +575,7 @@ MonoBehaviour:
   hit: {fileID: 8027631376658019304}
   hitSound: {fileID: 5108128019668864415}
   walkSound: {fileID: 5108128019668864415}
+  attackNoise: {fileID: 8806070468987536421}
 --- !u!82 &8806070468987536421
 AudioSource:
   m_ObjectHideFlags: 0
@@ -631,7 +632,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

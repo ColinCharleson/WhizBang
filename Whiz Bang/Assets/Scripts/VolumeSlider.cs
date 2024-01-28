@@ -9,7 +9,7 @@ public class VolumeSlider : MonoBehaviour
     void Start()
     {
         // Find the AudioManager instance in the scene
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.instance;
 
         // Set the slider value to the current master volume
         slider.value = audioManager.masterVolume;

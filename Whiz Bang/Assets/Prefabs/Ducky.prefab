@@ -4994,6 +4994,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   hitSound: {fileID: -328133466317848111}
   walkSound: {fileID: 6565517276885495151}
+  attackNoise: {fileID: -2522428756124117725}
 --- !u!195 &7676801656884674718
 NavMeshAgent:
   m_ObjectHideFlags: 0

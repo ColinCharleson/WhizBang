@@ -126,6 +126,9 @@ MonoBehaviour:
   allowButtonHold: 0
   playerRb: {fileID: 0}
   recoilForce: 0
+  shooting: 0
+  readyToShoot: 0
+  reloading: 0
   fpsCam: {fileID: 0}
   attackPoint: {fileID: 7330564693910276501}
   muzzleFlash: {fileID: 0}

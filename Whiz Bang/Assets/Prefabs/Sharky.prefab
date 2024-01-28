@@ -5001,6 +5001,7 @@ MonoBehaviour:
   hit: {fileID: 854353820996680168}
   hitSound: {fileID: 79986513839317070}
   walkSound: {fileID: 259079096289377634}
+  attackNoise: {fileID: 79986513839317070}
 --- !u!82 &79986513839317070
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5013,7 +5014,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5c0c328456f28154f8a7f450e2ad811b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.554
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

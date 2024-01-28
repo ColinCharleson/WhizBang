@@ -126,6 +126,9 @@ MonoBehaviour:
   allowButtonHold: 0
   playerRb: {fileID: 0}
   recoilForce: 30
+  shooting: 0
+  readyToShoot: 0
+  reloading: 0
   fpsCam: {fileID: 0}
   attackPoint: {fileID: 959740654590180192}
   muzzleFlash: {fileID: 8450835193862967294, guid: eaa8b77f315607747af38b836d499e77, type: 3}
@@ -194,7 +197,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 177770a4d5a68cc4d8de5bcbb2ab9f91, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.527
+  m_Volume: 1
   m_Pitch: 0.7
   Loop: 0
   Mute: 0

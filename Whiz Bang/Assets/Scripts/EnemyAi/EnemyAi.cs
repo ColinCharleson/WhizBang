@@ -41,7 +41,7 @@ public class EnemyAi : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     //Sounds
-    public AudioSource hitSound, walkSound;
+    public AudioSource hitSound, walkSound, attackNoise;
     private float nextWalkSoundTime;
     private float minTimeBetweenWalkSounds = 15f;
     private float maxTimeBetweenWalkSounds = 30f;
@@ -123,6 +123,7 @@ public class EnemyAi : MonoBehaviour
             ///
             if (isAlive)
             {
+                attackNoise.Play();
                 Rigidbody rb = Instantiate(projectile, bulletSpawnPoint.position, Quaternion.identity).GetComponent<Rigidbody>();
                 rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
         

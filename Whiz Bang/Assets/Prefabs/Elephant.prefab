@@ -5078,6 +5078,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   hitSound: {fileID: -4430445177995437429}
   walkSound: {fileID: 3823401624181986015}
+  attackNoise: {fileID: 2821246753893057033}
 --- !u!195 &544181210806730799
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5240,7 +5241,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5291,7 +5292,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8a4df6eceda4254468f4e59893b65c5b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -5336,7 +5337,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -5432,7 +5433,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
