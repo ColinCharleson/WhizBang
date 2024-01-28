@@ -11,11 +11,13 @@ public class GrapplingGun : MonoBehaviour
     public RaycastHit predictionHit;
     public float predictionSphereCastRadious;
     public Transform predictionPoint;
+    public AudioSource grappleSound;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {
+            grappleSound.Play();
             StartGrapple();
         }
         else if (Input.GetMouseButtonUp(1))

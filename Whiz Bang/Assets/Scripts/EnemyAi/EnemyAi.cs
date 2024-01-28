@@ -33,9 +33,18 @@ public class EnemyAi : MonoBehaviour
     bool alreadyAttacked;
     public GameObject projectile;
 
+    //Particles
+    public ParticleSystem hit;
+
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+
+    //Sounds
+    public AudioSource hitSound, walkSound;
+    private float nextWalkSoundTime;
+    private float minTimeBetweenWalkSounds = 15f;
+    private float maxTimeBetweenWalkSounds = 30f;
 
     private void Awake()
     {
@@ -85,6 +94,17 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
+        if (isAlive)
+        {
+            if (Time.time >= nextWalkSoundTime)
+            {
+                if (walkSound != null)
+                {
+                    walkSound.Play();
+                }
+                nextWalkSoundTime = Time.time + Random.Range(minTimeBetweenWalkSounds, maxTimeBetweenWalkSounds);
+            }
+        }
         animator.SetBool("Attacking", false);
         agent.SetDestination(player.position);
     }
@@ -121,6 +141,13 @@ public class EnemyAi : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        hit.Play();
+
+        if (hitSound != null)
+        {
+            hitSound.Play();
+        }
 
         if (health <= 0 && isAlive)
         {

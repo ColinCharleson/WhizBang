@@ -33,6 +33,9 @@ public class MeleeAI : MonoBehaviour
     private Vector3 walkPoint;
     private bool walkPointSet;
 
+    //particles
+    public ParticleSystem hit;
+
     //Sounds
     public AudioSource hitSound, walkSound;
     private float nextWalkSoundTime;
@@ -152,6 +155,7 @@ public class MeleeAI : MonoBehaviour
     {
         health -= damage;
 
+        hit.Play();
 
         if (hitSound != null)
         {

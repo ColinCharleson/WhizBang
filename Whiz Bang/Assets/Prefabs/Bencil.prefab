@@ -65,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 2295742150489319410}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.524, z: 0}
+  m_LocalPosition: {x: 0, y: -0.463, z: 0}
   m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -142,8 +142,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.31423596, y: 0.87601477, z: 2.0836687}
-  m_Center: {x: -0.64974254, y: -0.3067137, z: 0.22023009}
+  m_Size: {x: 0.5633915, y: 1.4172568, z: 2.704478}
+  m_Center: {x: 0.017885977, y: 0.17875902, z: 0.034662604}
 --- !u!114 &1393381687794826001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +170,9 @@ MonoBehaviour:
   allowButtonHold: 1
   playerRb: {fileID: 0}
   recoilForce: 0
+  shooting: 0
+  readyToShoot: 0
+  reloading: 0
   fpsCam: {fileID: 0}
   attackPoint: {fileID: 7330564693910276501}
   muzzleFlash: {fileID: 0}
@@ -353,7 +356,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3622ecf178f900b4b802554709925bbe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1f5ff5aa2037a8c448d496ad61383b92, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
