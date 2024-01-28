@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
 
     private bool isExpanding;
     private Vector3 desiredScale;
+    private int mapSize = 1;
     public enum Options
     {
         Zone,
@@ -24,7 +25,8 @@ public class Shop : MonoBehaviour
         switch (selectedOption)
         {
             case Options.Zone:
-                ZoneBubble();
+                if (!isExpanding)
+                    ZoneBubble();
                 break;
             case Options.Gift:
                 Present();
@@ -37,22 +39,39 @@ public class Shop : MonoBehaviour
     {
         if (isExpanding)
         {
+            Debug.Log(Vector3.Distance(transform.localScale, desiredScale));
             transform.localScale = Vector3.Lerp(transform.localScale, desiredScale, Time.deltaTime);
+
+            if (Vector3.Distance(transform.localScale, desiredScale) >= 0.1f)
+            {
+                isExpanding = true;
+            }
+            else
+            {
+                isExpanding = false;
+                mapSize++;
+            }
+        }
+
+        if(mapSize >= 5)
+        {
+            Destroy(this);
         }
     }
 
     private void ZoneBubble()
     {
-        cost *= 2;
+        cost += 500;
         desiredScale = new Vector3(transform.localScale.x * 1.5f, transform.localScale.y * 1.5f, transform.localScale.z * 1.5f);
         
-        if(transform.localScale != desiredScale)
+        if(Vector3.Distance(transform.localScale, desiredScale) >= 0.1f)
         {
             isExpanding = true;
         }
         else
         {
             isExpanding = false;
+            mapSize++;
         }
     }
     private void Present()

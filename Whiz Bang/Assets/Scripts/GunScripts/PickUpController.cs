@@ -46,7 +46,7 @@ public class PickUpController : MonoBehaviour
             PickUp();
         }
 
-        if (equipped && Input.GetKeyDown(KeyCode.Q))
+        if (equipped && Input.GetKeyDown(KeyCode.Q) && !gunScript.reloading)
         {
             Drop();
         }

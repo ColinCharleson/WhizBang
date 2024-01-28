@@ -26,7 +26,7 @@ public class GunScript : MonoBehaviour
     public float recoilForce;
 
     //bools
-    bool shooting, readyToShoot, reloading;
+    public bool shooting, readyToShoot, reloading;
 
     //Reference
     public Camera fpsCam;

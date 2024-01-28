@@ -4,7 +4,6 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     //Assingables
     public Transform playerCam;
     public Transform orientation;
@@ -47,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     //Sliding
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallNormalVector;
-
+    public GameObject deathUI;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -68,9 +67,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (health <= 0)
+        {
+            deathUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
+                GameObject.Destroy(enemy);
+
+            GameObject[] guns = GameObject.FindGameObjectsWithTag("Gun");
+            foreach (GameObject gun in guns)
+                GameObject.Destroy(gun);
+            Time.timeScale = 0;
+        }
+        else
+        {
         MyInput();
         Look();
         UpdateHealthDisplay();
+        }
     }
 
     /// <summary>
@@ -96,7 +112,10 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(health);
         if(health <= 0)
         {
-            Debug.Log("Penis");
+            deathUI.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 

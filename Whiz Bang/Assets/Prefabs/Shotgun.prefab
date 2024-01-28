@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: -3350551717261049785}
   m_Layer: 0
   m_Name: Shotgun
-  m_TagString: Untagged
+  m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   pickUpRange: 4
   dropForwardForce: 15
   dropUpwardForce: 7
-  equipped: 1
+  equipped: 0
 --- !u!54 &969097673834241866
 Rigidbody:
   m_ObjectHideFlags: 0
