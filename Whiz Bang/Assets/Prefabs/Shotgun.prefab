@@ -118,11 +118,11 @@ MonoBehaviour:
   shootForce: 200
   upwardForce: 0
   timeBetweenShooting: 3
-  spread: 1
+  spread: 0.5
   reloadTime: 3
   timeBetweenShots: 0
-  magazineSize: 20
-  bulletsPerTap: 20
+  magazineSize: 100
+  bulletsPerTap: 25
   allowButtonHold: 0
   playerRb: {fileID: 0}
   recoilForce: 30

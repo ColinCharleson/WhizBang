@@ -12,16 +12,25 @@ public class EnemyWaveSpawn : MonoBehaviour
     private int currentRound = 0;
     private int enemiesRemaining = 0;
 
+
+
+
     void Start()
     {
         StartNextRound();
+
     }
 
     void StartNextRound()
     {
         currentRound++;
+        GameObject player = GameObject.Find("Player");
+        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
 
-        int enemiesToSpawn = 3 + (currentRound / 2) * 3; 
+        // Set player's health to 100
+        playerMovement.health = 100;
+
+        int enemiesToSpawn = 5 + (currentRound / 2) * 5;
         enemiesRemaining = enemiesToSpawn;
 
         StartCoroutine(SpawnRound(enemiesToSpawn));
