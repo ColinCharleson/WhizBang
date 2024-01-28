@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public GameObject gameUI, pauseUI;
+    public GameObject gameUI, pauseUI, helpScreen;
 
     private void Start()
     {
@@ -29,6 +29,7 @@ public class SceneLoader : MonoBehaviour
                 { 
                     gameUI.SetActive(true);
                     pauseUI.SetActive(false);
+                    helpScreen.SetActive(false);
                     Time.timeScale = 1;
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
@@ -47,5 +48,18 @@ public class SceneLoader : MonoBehaviour
     public void ButtonQuit()
     {
         Application.Quit();
+    }
+
+    public void ShowHelp()
+    {
+        helpScreen.SetActive(true);
+        if(pauseUI)
+        pauseUI.SetActive(false);
+    }
+    public void HideHelp()
+    {
+        helpScreen.SetActive(false);
+        if (pauseUI)
+            pauseUI.SetActive(true);
     }
 }
