@@ -20,21 +20,23 @@ public class Shop : MonoBehaviour
     public Options selectedOption;
     public void Buy()
     {
-
-        switch (selectedOption)
+        if (ScoreSystem.instance.CheckScore() >= cost)
         {
-            case Options.Zone:
-                if (!isExpanding)
-                {
-                    ZoneBubble();
+            switch (selectedOption)
+            {
+                case Options.Zone:
+                    if (!isExpanding)
+                    {
+                        ZoneBubble();
+                        ScoreSystem.instance.UpdateScore(-cost);
+                    }
+                    break;
+                case Options.Gift:
+                    Present();
                     ScoreSystem.instance.UpdateScore(-cost);
-                }
-                break;
-            case Options.Gift:
-                Present();
-                ScoreSystem.instance.UpdateScore(-cost);
-                break;
-            default: break;
+                    break;
+                default: break;
+            }
         }
     }
 
