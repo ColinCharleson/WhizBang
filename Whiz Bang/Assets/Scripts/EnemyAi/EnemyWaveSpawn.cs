@@ -30,7 +30,7 @@ public class EnemyWaveSpawn : MonoBehaviour
         // Set player's health to 100
         playerMovement.health = 100;
 
-        int enemiesToSpawn = 5 + (currentRound / 2) * 5;
+        int enemiesToSpawn = 5 + (currentRound - 1) * 5;
         enemiesRemaining = enemiesToSpawn;
 
         StartCoroutine(SpawnRound(enemiesToSpawn));
