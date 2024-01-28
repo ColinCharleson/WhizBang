@@ -27,13 +27,13 @@ public class Shop : MonoBehaviour
                 case Options.Zone:
                     if (!isExpanding)
                     {
-                        ZoneBubble();
                         ScoreSystem.instance.UpdateScore(-cost);
+                        ZoneBubble();
                     }
                     break;
                 case Options.Gift:
-                    Present();
                     ScoreSystem.instance.UpdateScore(-cost);
+                    Present();
                     break;
                 default: break;
             }
@@ -81,6 +81,7 @@ public class Shop : MonoBehaviour
     }
     private void Present()
     {
+        gameObject.transform.parent.GetChild(0).gameObject.SetActive(true);
         Destroy(gameObject);
     }
 }
